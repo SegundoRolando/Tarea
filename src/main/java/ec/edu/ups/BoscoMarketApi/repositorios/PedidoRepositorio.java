@@ -1,4 +1,4 @@
 package ec.edu.ups.BoscoMarketApi.repositorios;
 
-public class PedidoRepositorio {
+public  interface PedidoRepositorio {
 }
