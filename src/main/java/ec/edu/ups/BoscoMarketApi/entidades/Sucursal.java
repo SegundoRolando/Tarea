@@ -2,6 +2,7 @@ package ec.edu.ups.BoscoMarketApi.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Sucursal implements Serializable {
@@ -14,7 +15,7 @@ public class Sucursal implements Serializable {
     private String telefono;
     private String latitud;
     private String altitud;
-    @OneToMany(fetch =  FetchType.LAZY, mappedBy = "producto", cascade = CascadeType.ALL)
+    @OneToMany(fetch =  FetchType.LAZY, mappedBy = "sucursal", cascade = CascadeType.ALL)
     private List<Producto> productos;
 
     public Sucursal(){
