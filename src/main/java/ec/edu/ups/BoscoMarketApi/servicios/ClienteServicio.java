@@ -1,0 +1,26 @@
+package ec.edu.ups.BoscoMarketApi.servicios;
+
+import ec.edu.ups.BoscoMarketApi.entidades.Cliente;
+import ec.edu.ups.BoscoMarketApi.repositorios.ClienteRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ClienteServicio {
+    @Autowired
+    private ClienteRepositorio clienteRepositorio;
+
+    public void save(Cliente cliente){
+        clienteRepositorio.save(cliente);
+    }
+
+    public List<Cliente> findAllClientes(){
+        return (List<Cliente>) clienteRepositorio.findAll();
+    }
+
+    public Cliente findById(Long id){
+        return clienteRepositorio.findById(id).orElse(null);
+    }
+}

@@ -35,7 +35,5 @@ public class ProductoControlador {
         producto.setSucursal(sucursalServicio.findById(crearProducto.getId()));
         productoServicio.save(producto);
         return ResponseEntity.ok(producto);
-
     }
-
 }
