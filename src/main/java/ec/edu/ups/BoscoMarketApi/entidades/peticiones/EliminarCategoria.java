@@ -2,7 +2,7 @@ package ec.edu.ups.BoscoMarketApi.entidades.peticiones;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CrearCategoria {
+public class EliminarCategoria {
     @JsonProperty
     private String nombre;
 

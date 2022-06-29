@@ -11,7 +11,6 @@ public class Categoria extends Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long id;
     private String nombre;
 
     public Categoria() {
@@ -31,5 +30,13 @@ public class Categoria extends Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }
