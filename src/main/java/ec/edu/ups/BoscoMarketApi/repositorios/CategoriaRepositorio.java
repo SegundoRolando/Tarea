@@ -8,8 +8,8 @@ import java.util.List;
 
 public  interface CategoriaRepositorio extends CrudRepository<Categoria, Long> {
     @Query("select c.id, c.nombre from Categoria c where c.id =:id")
-    String findCategoriaByCodigo(Long id);
+    String findCategoriaNombreById(Long id);
 
     @Query("select c from Categoria c")
-    List<String> findAllNombres();
+    List<String> findAllNombre();
 }

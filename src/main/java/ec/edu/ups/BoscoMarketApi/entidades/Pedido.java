@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Pedido implements Serializable {
+public class Pedido{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class Categoria extends Serializable {
+public class Categoria{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

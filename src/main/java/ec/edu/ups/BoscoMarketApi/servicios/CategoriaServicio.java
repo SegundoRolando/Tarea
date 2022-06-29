@@ -18,7 +18,7 @@ public class CategoriaServicio {
     }
     //Devuelve el nombre de la categoría por código
     public String retrieveCategoriaNombreById(Long id){
-        return (String) categoriaRepositorio.find(id);
+        return (String) categoriaRepositorio.findCategoriaNombreById(id);
     }
     //Guaradar Categoría
     public void save(Categoria categoria){
