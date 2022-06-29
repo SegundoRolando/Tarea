@@ -22,6 +22,7 @@ public class Producto implements Serializable {
     private String descripcion;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @Getter @Setter
     private Sucursal sucursal;
 
     public Producto() {

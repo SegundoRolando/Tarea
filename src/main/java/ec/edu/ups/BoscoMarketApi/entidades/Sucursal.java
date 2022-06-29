@@ -15,6 +15,7 @@ public class Sucursal implements Serializable {
     private String telefono;
     private String latitud;
     private String altitud;
+
     @OneToMany(fetch =  FetchType.LAZY, mappedBy = "sucursal", cascade = CascadeType.ALL)
     private List<Producto> productos;
 
