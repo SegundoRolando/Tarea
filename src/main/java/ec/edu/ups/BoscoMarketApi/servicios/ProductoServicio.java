@@ -24,6 +24,9 @@ public class ProductoServicio {
     public List<String> retrieveProductoBySucursal(Long codigo){
         return (List<String>) productoRepositorio.findProductoByCodigo(codigo);
     }
-    ///
+
+    public List<String> findProductoByCategoria(String nombre){
+        return (List<String>) productoRepositorio.findProductoByCategoria(nombre);
+    }
 
 }

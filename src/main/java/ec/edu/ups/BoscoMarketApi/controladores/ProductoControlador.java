@@ -33,7 +33,7 @@ public class ProductoControlador {
         producto.setStock(crearProducto.getStock());
         producto.setDescripcion(crearProducto.getDescripcion());
 
-        producto.setSucursal(sucursalServicio.findById(crearProducto.getId()));
+        producto.setSucursal(sucursalServicio.findById(crearProducto.getIdSucursal()));
         productoServicio.save(producto);
         return ResponseEntity.ok(producto);
     }
@@ -43,5 +43,11 @@ public class ProductoControlador {
         List<String> productos = productoServicio.retrieveProductoBySucursal(codigo);
         return new ResponseEntity<List<String>>(productos, HttpStatus.OK);
         //
+    }
+
+    @GetMapping("productoCategoria/{nombre}")
+    public ResponseEntity<List<String>> getProductosBySucursal(@PathVariable String nombre){
+        List<String> productos = productoServicio.findProductoByCategoria(nombre);
+        return new ResponseEntity<List<String>>(productos, HttpStatus.OK);
     }
 }
