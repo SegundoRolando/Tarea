@@ -1,7 +1,6 @@
 package ec.edu.ups.BoscoMarketApi.servicios;
 
 import ec.edu.ups.BoscoMarketApi.entidades.Producto;
-import ec.edu.ups.BoscoMarketApi.entidades.Sucursal;
 import ec.edu.ups.BoscoMarketApi.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +19,10 @@ public class ProductoServicio {
 
     public void save(Producto persona){
         productoRepositorio.save(persona);
+    }
+
+    public List<String> retrieveProductoBySucursal(Long codigo){
+        return (List<String>) productoRepositorio.findProductoByCodigo(codigo);
     }
 
 }

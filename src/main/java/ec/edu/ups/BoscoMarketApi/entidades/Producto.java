@@ -11,7 +11,7 @@ public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    private Long id;
+    private long id;
     @Getter @Setter
     private String nombre;
     @Getter @Setter
@@ -26,5 +26,13 @@ public class Producto implements Serializable {
     private Sucursal sucursal;
 
     public Producto() {
+    }
+
+    public Producto(Long id, String nombre, double precio, int stock, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.descripcion = descripcion;
     }
 }

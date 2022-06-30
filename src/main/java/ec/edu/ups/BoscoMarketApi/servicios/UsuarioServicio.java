@@ -1,8 +1,6 @@
 package ec.edu.ups.BoscoMarketApi.servicios;
 
-import ec.edu.ups.BoscoMarketApi.entidades.Cliente;
 import ec.edu.ups.BoscoMarketApi.entidades.Usuario;
-import ec.edu.ups.BoscoMarketApi.repositorios.ClienteRepositorio;
 import ec.edu.ups.BoscoMarketApi.repositorios.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
