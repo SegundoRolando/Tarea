@@ -1,6 +1,5 @@
 package ec.edu.ups.BoscoMarketApi.controladores;
 
-import ec.edu.ups.BoscoMarketApi.entidades.Categoria;
 import ec.edu.ups.BoscoMarketApi.entidades.Producto;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Producto.CrearProducto;
 import ec.edu.ups.BoscoMarketApi.servicios.CategoriaServicio;
@@ -10,7 +9,6 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

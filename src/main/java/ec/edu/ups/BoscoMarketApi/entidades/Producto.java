@@ -1,6 +1,5 @@
 package ec.edu.ups.BoscoMarketApi.entidades;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,11 +25,8 @@ public class Producto implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @Getter @Setter
     private Sucursal sucursal;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @Getter @Setter
-    private Pedido pedido;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<Pedido> pedido;
     @OneToOne
     @Getter @Setter
     private Categoria categoria;
@@ -46,4 +42,11 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public List<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(List<Pedido> pedido) {
+        this.pedido = pedido;
+    }
 }
