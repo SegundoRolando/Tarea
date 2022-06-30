@@ -6,6 +6,7 @@ import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Cliente.CrearCliente;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Tarjeta.CrearTarjeta;
 import ec.edu.ups.BoscoMarketApi.servicios.ClienteServicio;
 import ec.edu.ups.BoscoMarketApi.servicios.TarjetaServicio;
+import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TarjetaControlador {
     @Autowired
-    @Setter
+    @Setter @Getter
     private TarjetaServicio tarjetaServicio;
 
     @PostMapping("/tarjeta/create")
@@ -25,7 +26,7 @@ public class TarjetaControlador {
         PagoTarjeta tarjeta = new PagoTarjeta();
         tarjeta.setNumero(crearTarjeta.getNumero());
         tarjeta.setNombre(crearTarjeta.getNombre());
-
+        tarjetaServicio.save(tarjeta);
         return ResponseEntity.ok(tarjeta);
     }
 }

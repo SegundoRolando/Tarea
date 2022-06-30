@@ -21,11 +21,11 @@ public class ClienteServicio {
         return (List<Cliente>) clienteRepositorio.findAll();
     }
 
-    public Cliente findById(long id){
+    /*public Cliente findById(int id){
         return clienteRepositorio.findById(id).orElse(null);
-    }
+    }*/
 
-    public Optional<Cliente> findByCodigo(long codigo){
+    public Optional<Cliente> findByCodigo(int codigo){
         return (Optional<Cliente>) clienteRepositorio.findById(codigo);
     }
 }
