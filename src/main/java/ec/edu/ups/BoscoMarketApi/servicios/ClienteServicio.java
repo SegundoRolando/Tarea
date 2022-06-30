@@ -21,9 +21,9 @@ public class ClienteServicio {
         return (List<Cliente>) clienteRepositorio.findAll();
     }
 
-    /*public Cliente findById(int id){
+    public Cliente findById(Long id){
         return clienteRepositorio.findById(id).orElse(null);
-    }*/
+    }
 
     public Optional<Cliente> findByCodigo(Long codigo){
         return (Optional<Cliente>) clienteRepositorio.findById(codigo);
