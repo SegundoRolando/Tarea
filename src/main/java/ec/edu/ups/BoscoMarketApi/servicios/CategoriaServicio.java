@@ -41,4 +41,8 @@ public class CategoriaServicio {
     public Categoria findCategoria(Long id) {
         return categoriaRepositorio.findById(id).orElse(null);
     }
+
+    public Categoria findCategoriaProductoByNombre(String nombre){
+        return (Categoria) categoriaRepositorio.findCategoriaProductoByNombre(nombre);
+    }
 }
