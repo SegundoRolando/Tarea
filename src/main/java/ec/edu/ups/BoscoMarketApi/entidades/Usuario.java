@@ -1,5 +1,8 @@
 package ec.edu.ups.BoscoMarketApi.entidades;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,43 +10,19 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter @Setter
     private Long id;
+    @Getter @Setter
     private String correo;
+    @Getter @Setter
     private String password;
-    /*@OneToOne()
-    private Cliente cliente;*/
+    @Getter @Setter
+    private String rol;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @Getter @Setter
+    private Cliente cliente;
 
     public Usuario() {
-    }
-
-    public Usuario(Long id, String correo, String password) {
-        this.id = id;
-        this.correo = correo;
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override
@@ -52,6 +31,8 @@ public class Usuario implements Serializable {
                 "id=" + id +
                 ", correo='" + correo + '\'' +
                 ", password='" + password + '\'' +
+                ", rol='" + rol + '\'' +
+                ", cliente=" + cliente +
                 '}';
     }
 }

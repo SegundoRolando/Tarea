@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteServicio {
@@ -20,7 +21,11 @@ public class ClienteServicio {
         return (List<Cliente>) clienteRepositorio.findAll();
     }
 
-    public Cliente findById(Long id){
+    public Cliente findById(long id){
         return clienteRepositorio.findById(id).orElse(null);
+    }
+
+    public Optional<Cliente> findByCodigo(long codigo){
+        return (Optional<Cliente>) clienteRepositorio.findById(codigo);
     }
 }
