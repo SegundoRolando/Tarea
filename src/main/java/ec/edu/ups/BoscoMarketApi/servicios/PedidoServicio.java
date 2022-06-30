@@ -23,4 +23,8 @@ public class PedidoServicio {
         return (Optional<Pedido>)  pedidoRepositorio.findById(id);
     }
 
+    public List<Pedido> findAll(){
+        return (List<Pedido>) pedidoRepositorio.findAll();
+    }
+
 }

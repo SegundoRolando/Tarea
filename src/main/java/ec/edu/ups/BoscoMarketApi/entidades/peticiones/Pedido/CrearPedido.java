@@ -28,6 +28,5 @@ public class CrearPedido {
     private Long producto;
 
     public CrearPedido(){
-
     }
 }
