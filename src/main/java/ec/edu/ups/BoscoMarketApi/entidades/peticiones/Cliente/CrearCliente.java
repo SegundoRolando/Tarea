@@ -1,7 +1,6 @@
 package ec.edu.ups.BoscoMarketApi.entidades.peticiones.Cliente;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ec.edu.ups.BoscoMarketApi.entidades.Usuario;
 import lombok.Getter;
 import lombok.Setter;
 

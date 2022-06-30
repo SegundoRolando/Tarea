@@ -1,10 +1,7 @@
 package ec.edu.ups.BoscoMarketApi.controladores;
 
-import ec.edu.ups.BoscoMarketApi.entidades.Cliente;
 import ec.edu.ups.BoscoMarketApi.entidades.PagoTarjeta;
-import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Cliente.CrearCliente;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Tarjeta.CrearTarjeta;
-import ec.edu.ups.BoscoMarketApi.servicios.ClienteServicio;
 import ec.edu.ups.BoscoMarketApi.servicios.TarjetaServicio;
 import lombok.Getter;
 import lombok.Setter;

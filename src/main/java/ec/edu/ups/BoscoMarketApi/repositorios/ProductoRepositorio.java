@@ -11,5 +11,4 @@ public interface ProductoRepositorio extends CrudRepository<Producto, Long> {
     @Query("SELECT p from Producto p")
     List<String> findProductos();
 
-
 }
