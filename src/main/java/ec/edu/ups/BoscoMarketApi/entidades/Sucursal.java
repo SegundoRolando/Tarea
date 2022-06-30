@@ -3,6 +3,7 @@ package ec.edu.ups.BoscoMarketApi.entidades;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Sucursal implements Serializable {
@@ -77,6 +78,19 @@ public class Sucursal implements Serializable {
 
     public void setAltitud(String altitud) {
         this.altitud = altitud;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Sucursal)) return false;
+        Sucursal sucursal = (Sucursal) o;
+        return Objects.equals(id, sucursal.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
