@@ -11,4 +11,8 @@ public interface ProductoRepositorio extends CrudRepository<Producto, Long> {
     @Query("SELECT p from Producto p")
     List<String> findProductos();
 
+    @Query("SELECT p.sucursal.id, p.nombre FROM Producto p where p.sucursal.id = :codigo")
+    List<String> findProductoByCodigo(Long codigo);
+
+    //
 }
