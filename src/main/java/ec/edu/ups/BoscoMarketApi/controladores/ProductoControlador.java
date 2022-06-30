@@ -42,5 +42,6 @@ public class ProductoControlador {
     public ResponseEntity<List<String>> getProductosBySucursal(@PathVariable Long codigo){
         List<String> productos = productoServicio.retrieveProductoBySucursal(codigo);
         return new ResponseEntity<List<String>>(productos, HttpStatus.OK);
+        //
     }
 }
