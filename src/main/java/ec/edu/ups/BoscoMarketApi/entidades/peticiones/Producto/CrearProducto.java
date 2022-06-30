@@ -24,7 +24,11 @@ public class CrearProducto {
 
     @JsonProperty
     @Getter @Setter
-    private Long id;
+    private Long idSucursal;
+
+    @JsonProperty
+    @Getter @Setter
+    private Long idCategoria;
 
     public CrearProducto() {
     }

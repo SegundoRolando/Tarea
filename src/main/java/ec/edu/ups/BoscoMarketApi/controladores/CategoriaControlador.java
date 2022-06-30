@@ -1,8 +1,8 @@
 package ec.edu.ups.BoscoMarketApi.controladores;
 
 import ec.edu.ups.BoscoMarketApi.entidades.Categoria;
-import ec.edu.ups.BoscoMarketApi.entidades.peticiones.ActualizarCategoria;
-import ec.edu.ups.BoscoMarketApi.entidades.peticiones.CrearCategoria;
+import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Categoria.ActualizarCategoria;
+import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Categoria.CrearCategoria;
 import ec.edu.ups.BoscoMarketApi.servicios.CategoriaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

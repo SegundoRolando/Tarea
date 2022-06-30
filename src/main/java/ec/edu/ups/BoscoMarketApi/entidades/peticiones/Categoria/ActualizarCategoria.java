@@ -1,4 +1,4 @@
-package ec.edu.ups.BoscoMarketApi.entidades.peticiones;
+package ec.edu.ups.BoscoMarketApi.entidades.peticiones.Categoria;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

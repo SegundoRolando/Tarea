@@ -3,6 +3,8 @@ package ec.edu.ups.BoscoMarketApi.controladores;
 import ec.edu.ups.BoscoMarketApi.entidades.Producto;
 import ec.edu.ups.BoscoMarketApi.entidades.Sucursal;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Producto.CrearProducto;
+import ec.edu.ups.BoscoMarketApi.repositorios.CategoriaRepositorio;
+import ec.edu.ups.BoscoMarketApi.servicios.CategoriaServicio;
 import ec.edu.ups.BoscoMarketApi.servicios.ProductoServicio;
 import ec.edu.ups.BoscoMarketApi.servicios.SucursalServicio;
 import lombok.Setter;
@@ -23,6 +25,11 @@ public class ProductoControlador {
     @Setter
     private SucursalServicio sucursalServicio;
 
+    @Autowired
+    @Setter
+    private CategoriaServicio categoriaServicio;
+
+
     @PostMapping("/producto/create")
     public ResponseEntity<Producto> createProducto(@RequestBody CrearProducto crearProducto){
 
@@ -32,7 +39,8 @@ public class ProductoControlador {
         producto.setStock(crearProducto.getStock());
         producto.setDescripcion(crearProducto.getDescripcion());
 
-        producto.setSucursal(sucursalServicio.findById(crearProducto.getId()));
+        producto.setSucursal(sucursalServicio.findById(crearProducto.getIdSucursal()));
+        producto.setCategoria(categoriaServicio.findCategoria(crearProducto.getIdCategoria()));
         productoServicio.save(producto);
         return ResponseEntity.ok(producto);
     }

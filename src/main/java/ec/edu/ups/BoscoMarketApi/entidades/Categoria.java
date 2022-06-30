@@ -1,10 +1,11 @@
 package ec.edu.ups.BoscoMarketApi.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Categoria{
@@ -12,6 +13,9 @@ public class Categoria{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nombre;
+
+    @OneToMany(mappedBy = "categoria", cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Producto> productos;
 
     public Categoria() {
     }

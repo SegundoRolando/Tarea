@@ -25,6 +25,10 @@ public class Producto implements Serializable {
     @Getter @Setter
     private Sucursal sucursal;
 
+    @OneToOne
+    @Getter @Setter
+    private Categoria categoria;
+
     public Producto() {
     }
 }

@@ -22,6 +22,7 @@ public class FacturaCabecera implements Serializable {
     private double subtotal;
     @Getter @Setter
     private double iva;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @Getter @Setter
     private Cliente cliente;
