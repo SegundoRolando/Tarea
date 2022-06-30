@@ -28,6 +28,10 @@ public class PedidoControlador{
     @Setter
     private FacturaCabeceraServicio facturaCabeceraServicio;
 
+    @Autowired
+    @Setter
+    private ProductoServicio productoServicio;
+
     @PostMapping("/pedido/create")
     public ResponseEntity<Pedido> createPedido(@RequestBody CrearPedido crearPedido){
         Pedido pedido = new Pedido();
@@ -35,9 +39,8 @@ public class PedidoControlador{
         pedido.setEstado(crearPedido.getEstado());
         pedido.setLatitud(crearPedido.getLatitud());
         pedido.setLongitud(crearPedido.getLongitud());
-
-        pedido.setSucursal(sucursalServicio.findById(crearPedido.getSucursal()));
-        pedido.setFacturaCabecera(facturaCabeceraServicio.findById(crearPedido.getFacturaCabecera()));
+        pedido.setSucursal(sucursalServicio.findById(crearPedido.getIdSucursal()));
+        pedido.setFacturaCabecera(facturaCabeceraServicio.findById(crearPedido.getIdFacturaCabecera()));
 
         pedidoServicio.save(pedido);
         return ResponseEntity.ok(pedido);

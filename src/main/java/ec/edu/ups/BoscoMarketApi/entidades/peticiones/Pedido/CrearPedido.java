@@ -19,13 +19,13 @@ public class CrearPedido {
     private double costoEnvio;
     @JsonProperty
     @Getter @Setter
-    private Long sucursal;
+    private Long idSucursal;
     @JsonProperty
     @Getter @Setter
-    private Long facturaCabecera;
+    private Long idFacturaCabecera;
     @JsonProperty
     @Getter @Setter
-    private Long producto;
+    private Long idProducto;
 
     public CrearPedido(){
     }
