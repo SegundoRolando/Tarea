@@ -29,4 +29,7 @@ public class ProductoServicio {
         return (List<String>) productoRepositorio.findProductoByCategoria(nombre);
     }
 
+    public Producto findById(Long id) {
+        return productoRepositorio.findById(id).orElse(null);
+    }
 }

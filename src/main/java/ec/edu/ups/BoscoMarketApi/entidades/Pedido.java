@@ -11,19 +11,18 @@ public class Pedido{
     private double longitud;
     private String estado;
     private double costoEnvio;
-    @ManyToOne
-    @JoinColumn
-    private Usuario usuario;
+    //@ManyToOne
+    //@JoinColumn
+    //private Usuario usuario;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Sucursal  sucursal;
-
-    //@OneToOne(fetch = FetchType.LAZY)
-    //@JoinColumn
-    //private Factura factura;
-    //@OneToMany(fetch = FetchType.LAZY,mappedBy = "persona", cascade = CascadeType.ALL)
-    //private List<Producto> producto;
-
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private FacturaCabecera facturaCabecera;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Producto producto;
     public Pedido() {
     }
 
@@ -67,13 +66,13 @@ public class Pedido{
         this.costoEnvio = costoEnvio;
     }
 
-    public Usuario getUsuario() {
+   /* public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
+    }*/
 
     public Sucursal getSucursal() {
         return sucursal;
@@ -83,19 +82,19 @@ public class Pedido{
         this.sucursal = sucursal;
     }
 
-    //public Factura getFactura() {
-     //   return factura;
-   // }
+    public FacturaCabecera getFacturaCabecera() {
+        return facturaCabecera;
+    }
 
-   // public void setFactura(Factura factura) {
-      //  this.factura = factura;
-   // }
+    public void setFacturaCabecera(FacturaCabecera facturaCabecera) {
+        this.facturaCabecera = facturaCabecera;
+    }
 
-    //public List<Producto> getProducto() {
-     //   return producto;
-    //}
+    public Producto getProducto() {
+        return producto;
+    }
 
-    //public void setProducto(List<Producto> producto) {
-     //   this.producto = producto;
-   // }
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Producto implements Serializable {
@@ -24,7 +25,8 @@ public class Producto implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @Getter @Setter
     private Sucursal sucursal;
-
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<Pedido> pedido;
     @OneToOne
     @Getter @Setter
     private Categoria categoria;
@@ -38,5 +40,13 @@ public class Producto implements Serializable {
         this.precio = precio;
         this.stock = stock;
         this.descripcion = descripcion;
+    }
+
+    public List<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(List<Pedido> pedido) {
+        this.pedido = pedido;
     }
 }
