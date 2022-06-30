@@ -29,7 +29,7 @@ public class FacturaCabeceraControlador {
         facturaCabecera.setSubtotal(crearFacturaCabecera.getSubtotal());
         facturaCabecera.setTotal(crearFacturaCabecera.getTotal());
 
-        facturaCabecera.setCliente(clienteServicio.findById(crearFacturaCabecera.getId()));
+        //facturaCabecera.setCliente(clienteServicio.findById(crearFacturaCabecera.getId()));
         facturaCabeceraServicio.save(facturaCabecera);
         return ResponseEntity.ok(facturaCabecera);
     }

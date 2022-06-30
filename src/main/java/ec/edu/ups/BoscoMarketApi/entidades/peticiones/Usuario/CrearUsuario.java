@@ -16,7 +16,7 @@ public class CrearUsuario {
     private String rol;
     @JsonProperty
     @Getter @Setter
-    private Long cliente;
+    private int cliente;
 
     public CrearUsuario() {
     }
