@@ -25,7 +25,7 @@ public class ClienteServicio {
         return clienteRepositorio.findById(id).orElse(null);
     }*/
 
-    public Optional<Cliente> findByCodigo(int codigo){
+    public Optional<Cliente> findByCodigo(Long codigo){
         return (Optional<Cliente>) clienteRepositorio.findById(codigo);
     }
 }
