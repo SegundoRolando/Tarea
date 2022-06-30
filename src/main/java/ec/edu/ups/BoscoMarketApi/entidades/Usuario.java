@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
     private String password;
     @Getter @Setter
     private String rol;
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @Getter @Setter
     private Cliente cliente;
 

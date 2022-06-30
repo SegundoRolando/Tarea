@@ -30,10 +30,6 @@ public class CrearCliente {
     @Getter @Setter
     private String direccion;
 
-    @JsonProperty
-    @Getter @Setter
-    private Long usuario;
-
     public CrearCliente() {
     }
 }

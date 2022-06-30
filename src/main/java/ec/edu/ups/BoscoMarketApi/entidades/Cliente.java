@@ -11,7 +11,7 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    private int id;
+    private Long id;
     @Getter @Setter
     private String nombre;
     @Getter @Setter
@@ -24,10 +24,6 @@ public class Cliente implements Serializable {
     private String correo;
     @Getter @Setter
     private String direccion;
-    @OneToOne
-    @JoinColumn
-    @Getter @Setter
-    private Usuario usuario;
 
     public Cliente() {
     }

@@ -32,10 +32,6 @@ public class ClienteControlador {
     @PostMapping("/cliente/create")
     public ResponseEntity<Cliente> createCliente(@RequestBody CrearCliente crearCliente){
 
-        Optional<Usuario> usuario = usuarioServicio.findByCodigo(crearCliente.getUsuario());
-        if(usuario.isEmpty()){
-            return ResponseEntity.badRequest().build();
-        }
         Cliente cliente = new Cliente();
         cliente.setNombre(crearCliente.getNombre());
         cliente.setCedula(crearCliente.getCedula());
@@ -43,7 +39,6 @@ public class ClienteControlador {
         cliente.setTelefono(crearCliente.getTelefono());
         cliente.setCorreo(crearCliente.getCorreo());
         cliente.setDireccion(crearCliente.getDireccion());
-        cliente.setUsuario(usuario.get());
         clienteServicio.save(cliente);
         return ResponseEntity.ok(cliente);
     }
