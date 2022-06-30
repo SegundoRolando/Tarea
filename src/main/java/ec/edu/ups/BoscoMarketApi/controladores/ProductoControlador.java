@@ -55,4 +55,10 @@ public class ProductoControlador {
         List<String> productos = productoServicio.findProductoByCategoria(nombre);
         return new ResponseEntity<List<String>>(productos, HttpStatus.OK);
     }
+
+    @GetMapping("/productos")
+    public ResponseEntity<List<Producto>> getAllProducto(){
+        List<Producto> productoList = productoServicio.findAll();
+        return new ResponseEntity<List<Producto>>(productoList, HttpStatus.OK);
+    }
 }

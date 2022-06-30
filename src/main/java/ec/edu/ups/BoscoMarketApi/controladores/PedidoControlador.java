@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,6 +29,10 @@ public class PedidoControlador{
     @Setter
     private FacturaCabeceraServicio facturaCabeceraServicio;
 
+    @Autowired
+    @Setter
+    private ProductoServicio productoServicio;
+
     @PostMapping("/pedido/create")
     public ResponseEntity<Pedido> createPedido(@RequestBody CrearPedido crearPedido){
         Pedido pedido = new Pedido();
@@ -38,7 +43,7 @@ public class PedidoControlador{
 
         pedido.setSucursal(sucursalServicio.findById(crearPedido.getIdSucursal()));
         pedido.setFacturaCabecera(facturaCabeceraServicio.findById(crearPedido.getIdFacturaCabecera()));
-
+        pedido.setProducto(productoServicio.findById(crearPedido.getIdProducto()));
         pedidoServicio.save(pedido);
         return ResponseEntity.ok(pedido);
     }
