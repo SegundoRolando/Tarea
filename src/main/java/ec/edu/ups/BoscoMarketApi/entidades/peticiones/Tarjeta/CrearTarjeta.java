@@ -13,4 +13,11 @@ public class CrearTarjeta {
     @Getter @Setter
     private String nombre;
 
+    @JsonProperty
+    @Getter @Setter
+    private String fecha;
+    @JsonProperty
+    @Getter @Setter
+    private long cliente;
+
 }

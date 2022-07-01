@@ -3,10 +3,7 @@ package ec.edu.ups.BoscoMarketApi.entidades;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -21,6 +18,11 @@ public class PagoTarjeta implements Serializable {
     private int numero;
     @Getter @Setter
     private String nombre;
+    @Getter @Setter
+    private String fecha;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Getter @Setter
+    private Cliente cliente;
 
     public PagoTarjeta() {
     }

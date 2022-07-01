@@ -22,4 +22,9 @@ public class TarjetaServicio {
 
     public PagoTarjeta findById(Long id){ return tarjetaRepositorio.findById(id).orElse(null);
     }
+
+    public void delete(PagoTarjeta pagoTarjeta) {
+        tarjetaRepositorio.delete(pagoTarjeta);
+
+    }
 }

@@ -9,9 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -40,6 +38,15 @@ public class UsuarioControlador {
 
         usuarioServicio.save(usuario);
 
+        return ResponseEntity.ok(usuario);
+    }
+
+    @PutMapping("/usuario/edit/{id}")
+    public ResponseEntity <Usuario> update(@RequestBody CrearUsuario crearUsuario, @PathVariable Long id) {
+        Usuario usuario = this.usuarioServicio.findById(id);
+        usuario.setCorreo(crearUsuario.getCorreo());
+        usuario.setPassword(crearUsuario.getPassword());
+        this.usuarioServicio.save(usuario);
         return ResponseEntity.ok(usuario);
     }
 
