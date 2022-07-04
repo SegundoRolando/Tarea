@@ -28,4 +28,8 @@ public class PedidoServicio {
         return (List<Pedido>) pedidoRepositorio.findAll();
     }
 
+    public void delete(Long id){
+        pedidoRepositorio.deleteById(id);
+    }
+
 }
