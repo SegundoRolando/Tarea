@@ -20,17 +20,16 @@ import java.util.Optional;
 @RestController
 public class PedidoControlador{
 
+    //Variables globales
     @Setter
     static int Cant = 0;
-
     @Setter
     static  double costoenv = 0;
-
     @Setter
     static Long IDProducto;
-
     @Setter
     static Long IDCliente;
+
     @Autowired
     @Setter
     private PedidoServicio pedidoServicio;
@@ -66,6 +65,7 @@ public class PedidoControlador{
         pedidoServicio.save(pedido);
         return ResponseEntity.ok(pedido);
     }
+
 
     @GetMapping("/pedidos")
     public ResponseEntity <List<Pedido>> getAllPedidos(){

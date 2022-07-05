@@ -1,5 +1,6 @@
 package ec.edu.ups.BoscoMarketApi.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class Usuario implements Serializable {
     private String password;
     @Getter @Setter
     private String rol;
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @Getter @Setter
     private Cliente cliente;

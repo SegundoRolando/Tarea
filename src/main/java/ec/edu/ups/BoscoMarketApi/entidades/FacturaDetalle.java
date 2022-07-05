@@ -21,9 +21,14 @@ public class FacturaDetalle implements Serializable {
     private String descripcion;
     @Getter @Setter
     private double totalXproducto;
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @Getter @Setter
     private Pedido pedido;
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @Getter @Setter
+    private FacturaCabecera facturaCabecera;
 
     public FacturaDetalle() {
     }

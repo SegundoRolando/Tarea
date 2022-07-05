@@ -42,4 +42,8 @@ public class PedidoServicio {
         return (Optional<Pedido>) pedidoRepositorio.findById(codigo);
     }
 
+    public Long obtenerID(Double latitud){
+        return pedidoRepositorio.obtenerID(latitud);
+    }
+
 }

@@ -28,4 +28,7 @@ public class CrearFacturaDetalle {
     @JsonProperty
     @Getter @Setter
     private Long  idPedido;
+    @JsonProperty
+    @Getter @Setter
+    private Long  idFacturaCabecera;
 }
