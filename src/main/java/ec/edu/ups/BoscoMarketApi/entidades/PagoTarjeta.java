@@ -1,8 +1,8 @@
 package ec.edu.ups.BoscoMarketApi.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -20,8 +20,9 @@ public class PagoTarjeta implements Serializable {
     private String nombre;
     @Getter @Setter
     private String fecha;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @Getter @Setter
+    @JsonIgnore
     private Cliente cliente;
 
     public PagoTarjeta() {

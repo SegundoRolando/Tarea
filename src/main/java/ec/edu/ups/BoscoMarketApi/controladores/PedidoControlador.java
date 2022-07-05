@@ -20,6 +20,17 @@ import java.util.Optional;
 @RestController
 public class PedidoControlador{
 
+    @Setter
+    static int Cant = 0;
+
+    @Setter
+    static  double costoenv = 0;
+
+    @Setter
+    static Long IDProducto;
+
+    @Setter
+    static Long IDCliente;
     @Autowired
     @Setter
     private PedidoServicio pedidoServicio;
@@ -40,14 +51,18 @@ public class PedidoControlador{
     public ResponseEntity<Pedido> createPedido(@RequestBody CrearPedido crearPedido){
         Pedido pedido = new Pedido();
         pedido.setCostoEnvio(crearPedido.getCostoEnvio());
+        costoenv = crearPedido.getCostoEnvio();
         pedido.setEstado(crearPedido.getEstado());
+        Cant = crearPedido.getCantidadProducto();
         pedido.setCantidadProducto(crearPedido.getCantidadProducto());
         pedido.setLatitud(crearPedido.getLatitud());
         pedido.setLongitud(crearPedido.getLongitud());
         pedido.setCliente(clienteServicio.findById(crearPedido.getIdCliente()));
+        IDCliente = crearPedido.getIdCliente();
         pedido.setSucursal(sucursalServicio.findById(crearPedido.getIdSucursal()));
-        //pedido.setFacturaDetalle(facturaDetalleServicio.findById(crearPedido.getIdFacturaDetalle()));
+        //pedido.setFacturaDetalle(facturaDetalleServicio.findById(crearPedido.getIdFacturaDetalle()))
         pedido.setProducto(productoServicio.findById(crearPedido.getIdProducto()));
+        IDProducto = crearPedido.getIdProducto();
         pedidoServicio.save(pedido);
         return ResponseEntity.ok(pedido);
     }

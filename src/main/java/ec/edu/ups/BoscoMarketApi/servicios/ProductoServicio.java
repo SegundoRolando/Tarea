@@ -37,4 +37,8 @@ public class ProductoServicio {
     public Optional<Producto> findByCodigo(Long codigo){
         return (Optional<Producto>) productoRepositorio.findById(codigo);
     }
+
+    public Double precioById(Long id){
+        return productoRepositorio.precioByID(id);
+    }
 }
