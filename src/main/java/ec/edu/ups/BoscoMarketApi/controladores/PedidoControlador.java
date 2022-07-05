@@ -1,6 +1,9 @@
 package ec.edu.ups.BoscoMarketApi.controladores;
 
+import ec.edu.ups.BoscoMarketApi.entidades.Cliente;
 import ec.edu.ups.BoscoMarketApi.entidades.Pedido;
+import ec.edu.ups.BoscoMarketApi.entidades.Producto;
+import ec.edu.ups.BoscoMarketApi.entidades.Sucursal;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Categoria.ActualizarCategoria;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Pedido.ActualizarPedido;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Pedido.CrearPedido;
@@ -60,21 +63,36 @@ public class PedidoControlador{
         return ResponseEntity.ok("ok");
     }
 
-    @PutMapping("pedido/actualizar")
-    public ResponseEntity<Pedido> actualizarPedidos(@RequestBody ActualizarPedido actualizarPedido){
-        Optional<Pedido> pedidoOptional = pedidoServicio.findById(actualizarPedido.getId());
-        if(pedidoOptional.isEmpty()){
-            return  ResponseEntity.badRequest().build();
+    @PutMapping("pedido/actualizar/{id}")
+    public ResponseEntity<Pedido> actualizarPedidos(@RequestBody ActualizarPedido actualizarPedido, @PathVariable Long id){
+        Pedido pedido = this.pedidoServicio.findById(id);
+        Optional<Cliente> cliente = clienteServicio.findByCodigo(actualizarPedido.getIdCliente());
+        if(cliente.isEmpty()){
+            return ResponseEntity.badRequest().build();
         }
-        Pedido pedido =pedidoOptional.get();
+        Optional<Sucursal> sucursal = sucursalServicio.findByCodigo(actualizarPedido.getIdSucursal());
+        if(sucursal.isEmpty()){
+            return ResponseEntity.badRequest().build();
+        }
+        Optional<Producto> producto = productoServicio.findByCodigo(actualizarPedido.getIdProducto());
+        if(producto.isEmpty()){
+            return ResponseEntity.badRequest().build();
+        }
         pedido.setLatitud(actualizarPedido.getLatitud());
         pedido.setLongitud(actualizarPedido.getLongitud());
         pedido.setEstado(actualizarPedido.getEstado());
         pedido.setCantidadProducto(actualizarPedido.getCantidadProducto());
         pedido.setCostoEnvio(actualizarPedido.getCostoEnvio());
+        pedido.setCliente(pedido.getCliente());
+        pedido.setSucursal(pedido.getSucursal());
+        pedido.setProducto(pedido.getProducto());
+
+        //tarjeta.setCliente(cliente.get());
+
+        /*
         pedido.setCliente(clienteServicio.findById(actualizarPedido.getIdCliente()));
         pedido.setSucursal(sucursalServicio.findById(actualizarPedido.getIdSucursal()));
-        pedido.setProducto(productoServicio.findById(actualizarPedido.getIdProducto()));
+        pedido.setProducto(productoServicio.findById(actualizarPedido.getIdProducto()));*/
         pedidoServicio.save(pedido);
         return ResponseEntity.ok(pedido);
     }

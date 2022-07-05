@@ -7,5 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public  interface PedidoRepositorio extends CrudRepository<Pedido, Long> {
-
+/*
+    @Query("UPDATE producto, pedido SET producto.stock = producto.stock-pedido.cantidad_producto WHERE (pedido.producto_id=producto.id);")
+    String actualizarStock(Long id);*/
 }

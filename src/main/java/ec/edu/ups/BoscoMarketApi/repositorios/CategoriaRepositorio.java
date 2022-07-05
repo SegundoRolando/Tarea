@@ -17,4 +17,6 @@ public  interface CategoriaRepositorio extends CrudRepository<Categoria, Long> {
     Categoria findCategoriaProductoByNombre(String nombre);
 
 
+
+
 }

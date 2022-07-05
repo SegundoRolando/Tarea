@@ -17,11 +17,18 @@ public class PedidoServicio {
     //Guaradar pedido
     public void save(Pedido pedido){
         pedidoRepositorio.save(pedido);
-    }
+    }/*
+    public void actualizaCantidad(Pedido pedido, Long id){
+        pedidoRepositorio.actualizarStock(id);
+    }*/
+
 
     //Actualizar  Pedido
+    /*
     public Optional<Pedido> findById(long id){
         return (Optional<Pedido>)  pedidoRepositorio.findById(id);
+    }*/
+    public Pedido findById(Long id){ return pedidoRepositorio.findById(id).orElse(null);
     }
 
     public List<Pedido> findAll(){
@@ -30,6 +37,9 @@ public class PedidoServicio {
 
     public void delete(Long id){
         pedidoRepositorio.deleteById(id);
+    }
+    public Optional<Pedido> findByCodigo(Long codigo){
+        return (Optional<Pedido>) pedidoRepositorio.findById(codigo);
     }
 
 }
