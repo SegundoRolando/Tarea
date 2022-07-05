@@ -22,7 +22,9 @@ public class FacturaDetalle implements Serializable {
     @Getter @Setter
     private double totalXproducto;
     @OneToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     @Getter @Setter
     private Pedido pedido;
+
+    public FacturaDetalle() {
+    }
 }
