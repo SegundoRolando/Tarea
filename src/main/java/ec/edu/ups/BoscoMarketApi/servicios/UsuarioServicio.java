@@ -28,4 +28,12 @@ public class UsuarioServicio {
     public Optional<Usuario> findByCodigo(Long codigo){
         return (Optional<Usuario>) usuarioRepositorio.findById(codigo);
     }
+
+    public String iniciarSesionCorreo(String correo){
+        return usuarioRepositorio.inicioSesionCorreo(correo);
+    }
+
+    public String iniciarSesionPassword(String password){
+        return usuarioRepositorio.inicioSesionPasword(password);
+    }
 }
