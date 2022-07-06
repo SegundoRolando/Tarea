@@ -17,14 +17,22 @@ public class Pedido implements Serializable {
 
     @Getter @Setter
     private double latitud;
+
     @Getter @Setter
     private double longitud;
+
     @Getter @Setter
     private String estado;
+
     @Getter @Setter
     private int cantidadProducto;
+
     @Getter @Setter
     private double costoEnvio;
+
+    @Getter @Setter
+    private String llegada;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @Getter @Setter
@@ -34,12 +42,7 @@ public class Pedido implements Serializable {
     @JsonIgnore
     @Getter @Setter
     private Sucursal  sucursal;
-/*
-    @OneToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    @Getter @Setter
-    private FacturaDetalle facturaDetalle;
-*/
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @Getter @Setter

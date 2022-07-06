@@ -21,7 +21,16 @@ public class SucursalServicio {
     public List<Sucursal> findAll(){
         return (List<Sucursal>) sucursalRepositorio.findAll();
     }
+
     public Optional<Sucursal> findByCodigo(Long codigo){
         return (Optional<Sucursal>) sucursalRepositorio.findById(codigo);
+    }
+
+    public String latitud(Long id){
+        return sucursalRepositorio.latitud(id);
+    }
+
+    public String longitud(Long id){
+        return sucursalRepositorio.longitud(id);
     }
 }

@@ -30,6 +30,8 @@ public class PedidoControlador{
     @Setter
     static Long IDCliente;
 
+    @Setter Long IDSucursal;
+
     @Autowired
     @Setter
     private PedidoServicio pedidoServicio;
@@ -49,7 +51,6 @@ public class PedidoControlador{
     @PostMapping("/pedido/create")
     public ResponseEntity<Pedido> createPedido(@RequestBody CrearPedido crearPedido){
         Pedido pedido = new Pedido();
-        pedido.setCostoEnvio(crearPedido.getCostoEnvio());
         costoenv = crearPedido.getCostoEnvio();
         pedido.setEstado(crearPedido.getEstado());
         Cant = crearPedido.getCantidadProducto();
@@ -59,10 +60,46 @@ public class PedidoControlador{
         pedido.setCliente(clienteServicio.findById(crearPedido.getIdCliente()));
         IDCliente = crearPedido.getIdCliente();
         pedido.setSucursal(sucursalServicio.findById(crearPedido.getIdSucursal()));
+        IDSucursal = crearPedido.getIdSucursal();
         //pedido.setFacturaDetalle(facturaDetalleServicio.findById(crearPedido.getIdFacturaDetalle()))
         pedido.setProducto(productoServicio.findById(crearPedido.getIdProducto()));
         IDProducto = crearPedido.getIdProducto();
+
+        //Calcular costo del envío
+        double latitudSucursal = Double.parseDouble(sucursalServicio.latitud(IDSucursal));
+        double longitudSucursal = Double.parseDouble(sucursalServicio.longitud(IDSucursal));
+        double latitudPedido = crearPedido.getLatitud();
+        double longitudPedido = crearPedido.getLongitud();
+        double radio = 6372;
+
+        double dLat = Math.toRadians(latitudPedido - latitudSucursal);
+        double dLng = Math.toRadians(longitudPedido - longitudSucursal);
+        double sindLat = Math.sin(dLat/2);
+        double sindLng = Math.sin(dLng/2);
+        double va1 = Math.pow(sindLat,2) + Math.toRadians(Math.cos(latitudSucursal)) * Math.toRadians(Math.cos(latitudPedido)) * Math.pow(sindLng,2);
+        double va2 = Math.sqrt(va1);
+        double distancia = 2 * radio * Math.asin(va2);
+        double distanciaTotal = Math.round(distancia * 100)/100;
+
+        //Cada KM tiene un costo de 0.50 Centavos
+        costoenv = (distanciaTotal * 0.5)/1;
+        pedido.setCostoEnvio(costoenv);
+
+        //Para estimar el tiempo de llegada del pedido se tiene en cuenta que el pedido va a una velocidad de 45KM/H
+        double horas = (distanciaTotal * 1)/45;
+        String lllegada = "El tiempo de llegada del pedido es de " +horas+" horas";
+
+        pedido.setLlegada(lllegada);
+
         pedidoServicio.save(pedido);
+
+        System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudSucursal);
+        System.out.println("LONGITUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+longitudSucursal);
+        System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudPedido);
+        System.out.println("LONGITUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+longitudPedido);
+        System.out.println("DISTANCIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "+distanciaTotal+"KM");
+        System.out.println("COSTO ENVIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO "+costoenv);
+
         return ResponseEntity.ok(pedido);
     }
 
