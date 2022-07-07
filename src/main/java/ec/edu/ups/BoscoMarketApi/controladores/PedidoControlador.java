@@ -50,6 +50,9 @@ public class PedidoControlador{
 
     @PostMapping("/pedido/create")
     public ResponseEntity<Pedido> createPedido(@RequestBody CrearPedido crearPedido){
+
+
+
         Pedido pedido = new Pedido();
         costoenv = crearPedido.getCostoEnvio();
         pedido.setEstado(crearPedido.getEstado());
@@ -64,6 +67,8 @@ public class PedidoControlador{
         //pedido.setFacturaDetalle(facturaDetalleServicio.findById(crearPedido.getIdFacturaDetalle()))
         pedido.setProducto(productoServicio.findById(crearPedido.getIdProducto()));
         IDProducto = crearPedido.getIdProducto();
+
+        updateStock();
 
         //Calcular costo del envío
         double latitudSucursal = Double.parseDouble(sucursalServicio.latitud(IDSucursal));
@@ -90,7 +95,9 @@ public class PedidoControlador{
         String lllegada = "El tiempo de llegada del pedido es de " +horas+" horas";
 
         pedido.setLlegada(lllegada);
+
         pedidoServicio.save(pedido);
+
 
         //Lineas para mostrar los datos necesarios
         System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudSucursal);
@@ -103,6 +110,13 @@ public class PedidoControlador{
         return ResponseEntity.ok(pedido);
     }
 
+    public void updateStock(){
+        System.out.println("Entreeeeeeeeeee");
+        Producto producto = productoServicio.findById(IDProducto);
+        producto.setStock(producto.getStock() - Cant);
+        System.out.println("proucogososssdddd " + producto.getStock());
+        productoServicio.save(producto);
+    }
 
     @GetMapping("/pedidos")
     public ResponseEntity <List<Pedido>> getAllPedidos(){

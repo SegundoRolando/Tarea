@@ -19,8 +19,8 @@ public class ProductoServicio {
         return (List<Producto>) productoRepositorio.findAll();
     }
 
-    public void save(Producto persona){
-        productoRepositorio.save(persona);
+    public void save(Producto producto){
+        productoRepositorio.save(producto);
     }
 
     public List<String> retrieveProductoBySucursal(Long codigo){
@@ -41,4 +41,5 @@ public class ProductoServicio {
     public Double precioById(Long id){
         return productoRepositorio.precioByID(id);
     }
+
 }
