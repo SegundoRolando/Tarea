@@ -90,9 +90,9 @@ public class PedidoControlador{
         String lllegada = "El tiempo de llegada del pedido es de " +horas+" horas";
 
         pedido.setLlegada(lllegada);
-
         pedidoServicio.save(pedido);
 
+        //Lineas para mostrar los datos necesarios
         System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudSucursal);
         System.out.println("LONGITUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+longitudSucursal);
         System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudPedido);
