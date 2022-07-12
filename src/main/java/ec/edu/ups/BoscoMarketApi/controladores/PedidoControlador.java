@@ -100,12 +100,12 @@ public class PedidoControlador{
 
 
         //Lineas para mostrar los datos necesarios
-        System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudSucursal);
-        System.out.println("LONGITUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+longitudSucursal);
-        System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudPedido);
-        System.out.println("LONGITUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+longitudPedido);
-        System.out.println("DISTANCIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "+distanciaTotal+"KM");
-        System.out.println("COSTO ENVIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO "+costoenv);
+        //System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudSucursal);
+        //System.out.println("LONGITUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+longitudSucursal);
+        //System.out.println("LATITUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+latitudPedido);
+        //System.out.println("LONGITUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "+longitudPedido);
+        //System.out.println("DISTANCIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "+distanciaTotal+"KM");
+        //System.out.println("COSTO ENVIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO "+costoenv);
 
         return ResponseEntity.ok(pedido);
     }

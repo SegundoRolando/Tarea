@@ -50,4 +50,6 @@ public class UsuarioControlador {
         return ResponseEntity.ok(usuario);
     }
 
+
+
 }

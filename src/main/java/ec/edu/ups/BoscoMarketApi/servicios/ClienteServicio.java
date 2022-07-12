@@ -28,4 +28,9 @@ public class ClienteServicio {
     public Optional<Cliente> findByCodigo(Long codigo){
         return (Optional<Cliente>) clienteRepositorio.findById(codigo);
     }
+
+    public void delete(Cliente pesona) {
+        clienteRepositorio.delete(pesona);
+
+    }
 }

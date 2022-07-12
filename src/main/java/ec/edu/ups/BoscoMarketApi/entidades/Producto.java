@@ -22,6 +22,8 @@ public class Producto implements Serializable {
     private int stock;
     @Getter @Setter
     private String descripcion;
+    @Getter @Setter
+    private String imagen;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore

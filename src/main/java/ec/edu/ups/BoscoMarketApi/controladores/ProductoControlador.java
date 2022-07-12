@@ -1,6 +1,7 @@
 package ec.edu.ups.BoscoMarketApi.controladores;
 
 import ec.edu.ups.BoscoMarketApi.entidades.Producto;
+import ec.edu.ups.BoscoMarketApi.entidades.Usuario;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Producto.CrearProducto;
 import ec.edu.ups.BoscoMarketApi.servicios.CategoriaServicio;
 import ec.edu.ups.BoscoMarketApi.servicios.ProductoServicio;
@@ -10,9 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 public class ProductoControlador {
 
