@@ -7,7 +7,7 @@ import lombok.Setter;
 public class CrearTarjeta {
     @JsonProperty
     @Getter @Setter
-    private int numero;
+    private String numero;
 
     @JsonProperty
     @Getter @Setter
