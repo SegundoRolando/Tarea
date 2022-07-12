@@ -15,7 +15,7 @@ public class PagoTarjeta implements Serializable {
     @Getter @Setter
     private Long id;
     @Getter @Setter
-    private int numero;
+    private String numero;
     @Getter @Setter
     private String nombre;
     @Getter @Setter
