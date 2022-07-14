@@ -46,4 +46,8 @@ public class PedidoServicio {
         return pedidoRepositorio.obtenerID(latitud);
     }
 
+    public List<String> findPedidoByCliente(Long codigo){
+        return (List<String>) pedidoRepositorio.findPedidoByCliente(codigo);
+    }
+
 }

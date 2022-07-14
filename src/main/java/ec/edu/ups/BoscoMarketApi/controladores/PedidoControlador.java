@@ -162,4 +162,9 @@ public class PedidoControlador{
         pedidoServicio.save(pedido);
         return ResponseEntity.ok(pedido);
     }
+    @GetMapping("/pedido/{clienteId}")
+    public ResponseEntity<List<String>> getPedidosByCliente(@PathVariable Long clienteId){
+        List<String> pedidoListCliente = pedidoServicio.findPedidoByCliente(clienteId);
+        return new ResponseEntity<List<String>>(pedidoListCliente, HttpStatus.OK);
+    }
 }

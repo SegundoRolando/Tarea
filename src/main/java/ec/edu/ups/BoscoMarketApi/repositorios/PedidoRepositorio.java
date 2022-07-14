@@ -13,4 +13,7 @@ public  interface PedidoRepositorio extends CrudRepository<Pedido, Long> {
 
     @Query("SELECT p.id FROM Pedido p where p.latitud = :latitud")
     Long obtenerID(Double latitud);
+
+    @Query("SELECT p.latitud,p.longitud,p.estado,p.cantidadProducto,p.costoEnvio FROM Pedido p where p.cliente.id = :clienteId")
+    List<String> findPedidoByCliente(Long clienteId);
 }
