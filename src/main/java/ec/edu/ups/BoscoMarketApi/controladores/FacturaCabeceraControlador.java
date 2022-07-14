@@ -7,6 +7,7 @@ import ec.edu.ups.BoscoMarketApi.servicios.ProductoServicio;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 
 import static ec.edu.ups.BoscoMarketApi.controladores.PedidoControlador.*;
 
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 public class FacturaCabeceraControlador {
     @Autowired

@@ -11,11 +11,11 @@ public interface ProductoRepositorio extends CrudRepository<Producto, Long> {
     @Query("SELECT p from Producto p")
     List<String> findProductos();
 
-    @Query("SELECT p.id, p.nombre, p.precio, p.stock, p.descripcion FROM Producto p where p.sucursal.id = :codigo")
-    List<String> findProductoByCodigo(Long codigo);
+    @Query("SELECT p FROM Producto p where p.sucursal.id = :codigo")
+    List<Producto> findProductoByCodigo(Long codigo);
 
-    @Query("SELECT p.id, p.nombre, p.precio, p.stock, p.descripcion FROM Producto p where p.categoria.nombre = :nombre")
-    List<String> findProductoByCategoria(String nombre);
+    @Query("SELECT p FROM Producto p where p.categoria.nombre = :nombre")
+    List<Producto> findProductoByCategoria(String nombre);
 
     @Query("SELECT p.precio FROM Producto p where p.id = :codigo")
     Double precioByID(Long codigo);

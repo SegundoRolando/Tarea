@@ -48,16 +48,16 @@ public class ProductoControlador {
     }
 
     @GetMapping("/prodXsucursal/{codigo}")
-    public ResponseEntity<List<String>> getProductosBySucursal(@PathVariable Long codigo){
-        List<String> productos = productoServicio.retrieveProductoBySucursal(codigo);
-        return new ResponseEntity<List<String>>(productos, HttpStatus.OK);
+    public ResponseEntity<List<Producto>> getProductosBySucursal(@PathVariable Long codigo){
+        List<Producto> productos = productoServicio.retrieveProductoBySucursal(codigo);
+        return new ResponseEntity<List<Producto>>(productos, HttpStatus.OK);
         //
     }
 
     @GetMapping("/productoCategoria/{nombre}")
-    public ResponseEntity<List<String>> getProductosBySucursal(@PathVariable String nombre){
-        List<String> productos = productoServicio.findProductoByCategoria(nombre);
-        return new ResponseEntity<List<String>>(productos, HttpStatus.OK);
+    public ResponseEntity<List<Producto>> getProductosBySucursal(@PathVariable String nombre){
+        List<Producto> productos = productoServicio.findProductoByCategoria(nombre);
+        return new ResponseEntity<List<Producto>>(productos, HttpStatus.OK);
     }
 
     @GetMapping("/productos")

@@ -23,12 +23,12 @@ public class ProductoServicio {
         productoRepositorio.save(producto);
     }
 
-    public List<String> retrieveProductoBySucursal(Long codigo){
-        return (List<String>) productoRepositorio.findProductoByCodigo(codigo);
+    public List<Producto> retrieveProductoBySucursal(Long codigo){
+        return (List<Producto>) productoRepositorio.findProductoByCodigo(codigo);
     }
 
-    public List<String> findProductoByCategoria(String nombre){
-        return (List<String>) productoRepositorio.findProductoByCategoria(nombre);
+    public List<Producto> findProductoByCategoria(String nombre){
+        return (List<Producto>) productoRepositorio.findProductoByCategoria(nombre);
     }
 
     public Producto findById(Long id) {
