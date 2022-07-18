@@ -1,6 +1,5 @@
 package ec.edu.ups.BoscoMarketApi.servicios;
 
-import ec.edu.ups.BoscoMarketApi.entidades.Cliente;
 import ec.edu.ups.BoscoMarketApi.entidades.Producto;
 import ec.edu.ups.BoscoMarketApi.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +25,9 @@ public class ProductoServicio {
     public List<Producto> retrieveProductoBySucursal(Long codigo){
         return (List<Producto>) productoRepositorio.findProductoByCodigo(codigo);
     }
+    public String returnProductoByName(Long codigo){
+        return  productoRepositorio.findProductoByName(codigo);
+    }
 
     public List<Producto> findProductoByCategoria(String nombre){
         return (List<Producto>) productoRepositorio.findProductoByCategoria(nombre);
@@ -34,6 +36,7 @@ public class ProductoServicio {
     public Producto findById(Long id) {
         return productoRepositorio.findById(id).orElse(null);
     }
+
     public Optional<Producto> findByCodigo(Long codigo){
         return (Optional<Producto>) productoRepositorio.findById(codigo);
     }

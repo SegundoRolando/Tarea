@@ -7,6 +7,7 @@ import ec.edu.ups.BoscoMarketApi.entidades.Sucursal;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Categoria.ActualizarCategoria;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Pedido.ActualizarPedido;
 import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Pedido.CrearPedido;
+import ec.edu.ups.BoscoMarketApi.entidades.peticiones.Pedido.Pedidos;
 import ec.edu.ups.BoscoMarketApi.servicios.*;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 public class PedidoControlador{
@@ -51,7 +51,6 @@ public class PedidoControlador{
 
     @PostMapping("/pedido/create")
     public ResponseEntity<Pedido> createPedido(@RequestBody CrearPedido crearPedido){
-
 
 
         Pedido pedido = new Pedido();
@@ -124,13 +123,21 @@ public class PedidoControlador{
         List<Pedido> pedidoList = pedidoServicio.findAll();
         return new ResponseEntity<List<Pedido>>(pedidoList, HttpStatus.OK);
     }
-    @DeleteMapping("pedido/eliminar/{id}")
+//************************
+    @GetMapping("/pedidos/{clienteId}")
+    public ResponseEntity<List<Pedidos>> getPedidosByCliente(@PathVariable Long clienteId){
+        List<Pedidos> pedidoListCliente = pedidoServicio.finpedidoProducto(clienteId);
+        return new ResponseEntity<List<Pedidos>>(pedidoListCliente, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("pedidos/{id}")
     public ResponseEntity<String> eliminarPedido(@PathVariable Long id){
         pedidoServicio.delete(id);
         return ResponseEntity.ok("ok");
     }
 
-    @PutMapping("pedido/actualizar/{id}")
+    @PutMapping("pedidos/{id}")
     public ResponseEntity<Pedido> actualizarPedidos(@RequestBody ActualizarPedido actualizarPedido, @PathVariable Long id){
         Pedido pedido = this.pedidoServicio.findById(id);
         Optional<Cliente> cliente = clienteServicio.findByCodigo(actualizarPedido.getIdCliente());
@@ -163,9 +170,5 @@ public class PedidoControlador{
         pedidoServicio.save(pedido);
         return ResponseEntity.ok(pedido);
     }
-    @GetMapping("/pedido/{clienteId}")
-    public ResponseEntity<List<String>> getPedidosByCliente(@PathVariable Long clienteId){
-        List<String> pedidoListCliente = pedidoServicio.findPedidoByCliente(clienteId);
-        return new ResponseEntity<List<String>>(pedidoListCliente, HttpStatus.OK);
-    }
+
 }
