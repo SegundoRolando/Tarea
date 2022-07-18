@@ -19,23 +19,12 @@ public class InicioSesionControlador {
     @Setter
     private UsuarioServicio usuarioServicio;
 
-    @PostMapping("/inicioSesion")
-    public ResponseEntity<String> inicioSesion(@RequestBody Usuario usuario){
-        String resultadoCorreo = usuarioServicio.iniciarSesionCorreo(usuario.getCorreo());
-        String resultadoPassword = usuarioServicio.iniciarSesionPassword(usuario.getPassword());
-        if (resultadoCorreo == null || resultadoPassword == null){
-            return new ResponseEntity<String>("Correo o contraseña incorrectos", HttpStatus.OK);
-        }else {
-            return new ResponseEntity<String>("Inicio de sesion correcto", HttpStatus.OK);
-        }
-    }
-
     @PostMapping("/login")
     public ResponseEntity<Usuario> inicioSesion(@RequestBody CrearUsuario usuario) {
         Optional<Usuario> usu = usuarioServicio.findUsuario(usuario.getCorreo(), usuario.getPassword());
         if (usu.isEmpty()) {
             return  new ResponseEntity(usu, HttpStatus.BAD_REQUEST);
         }
-        return  new ResponseEntity(usu, HttpStatus.OK);
+            return  new ResponseEntity(usu.get().getCliente().getId(),  HttpStatus.OK);
     }
 }

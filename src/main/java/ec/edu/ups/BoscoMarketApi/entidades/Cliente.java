@@ -30,4 +30,17 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
     //
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", cedula='" + cedula + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", direccion='" + direccion + '\'' +
+                '}';
+    }
 }
