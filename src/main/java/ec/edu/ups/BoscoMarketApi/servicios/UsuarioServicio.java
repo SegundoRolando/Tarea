@@ -36,4 +36,8 @@ public class UsuarioServicio {
     public String iniciarSesionPassword(String password){
         return usuarioRepositorio.inicioSesionPasword(password);
     }
+
+    public Optional<Usuario> findUsuario(String correo, String password){
+        return (Optional<Usuario>) usuarioRepositorio.findUsuario(correo,password);
+    }
 }
