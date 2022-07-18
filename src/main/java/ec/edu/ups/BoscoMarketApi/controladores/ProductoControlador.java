@@ -65,4 +65,6 @@ public class ProductoControlador {
         List<Producto> productoList = productoServicio.findAll();
         return new ResponseEntity<List<Producto>>(productoList, HttpStatus.OK);
     }
+
+
 }
