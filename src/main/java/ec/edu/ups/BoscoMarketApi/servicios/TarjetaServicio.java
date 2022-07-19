@@ -16,7 +16,7 @@ public class TarjetaServicio {
         tarjetaRepositorio.save(tarjeta);
     }
 
-    public List<PagoTarjeta> findAllTarjetas(){
+    public List<PagoTarjeta> findAll(){
         return (List<PagoTarjeta>) tarjetaRepositorio.findAll();
     }
 
@@ -25,6 +25,8 @@ public class TarjetaServicio {
 
     public void delete(PagoTarjeta pagoTarjeta) {
         tarjetaRepositorio.delete(pagoTarjeta);
-
     }
+
+    public List<PagoTarjeta> findByClienteID(Long id){return (List<PagoTarjeta>) tarjetaRepositorio.findByClienteId(id);}
+
 }
